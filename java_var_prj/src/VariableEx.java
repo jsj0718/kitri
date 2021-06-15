@@ -15,7 +15,8 @@ public class VariableEx {
 				+ "- 키 \t: %d \n"
 				+ "- 학교 \t: %s \n"
 				+ "- 주소 \t: %s \n"
-				+ "- 번호 \t: %s \n",
+				+ "- 번호 \t: %s \n"
+				+ "- 인사말 \t: 안녕하세요.",
 				name, age, height, univercity, address, phone);
 	}
 
