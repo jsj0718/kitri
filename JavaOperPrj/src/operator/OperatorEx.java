@@ -20,6 +20,8 @@ public class OperatorEx {
 		String result3 = (num % 3 == 0 && num != 0) ? "3의 배수 O" : "3의 배수 X";
 		String result4 = (num % 5 == 0 && num != 0) ? "5의 배수 O" : "5의 배수 X";
 		System.out.println("숫자 : " + num + ", " + result3 + ", " + result4);
+		
+		sc.close();
 	}
 
 }

@@ -77,6 +77,7 @@ public class Operator {
 		
 		String resultStr3 = (var1 > var2) ? "var1이 크다" : ((var1 < var2) ? "var2가 크다" : "var1과 var2가 같다");
 		System.out.println(resultStr3);
+		
 	}
 
 }
