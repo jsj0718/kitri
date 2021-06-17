@@ -73,5 +73,7 @@ public class SwitchStudy {
 				System.out.println("출력 오류");
 		}
 		System.out.println("결과값: " + result);
+		
+		sc.close();
 	}
 }

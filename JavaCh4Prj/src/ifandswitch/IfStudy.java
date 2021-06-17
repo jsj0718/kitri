@@ -93,5 +93,7 @@ public class IfStudy {
 		
 		System.out.println("ÃÑÇÕ : " + (kor + eng + math));
 		System.out.println("Æò±Õ : " + (kor + eng + math) / 3);
+		
+		sc.close();
 	}
 }
