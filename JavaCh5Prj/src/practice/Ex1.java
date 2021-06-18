@@ -90,7 +90,7 @@ public class Ex1 {
 		 * 16 17 18 19 20
 		 */
 		
-		for (int i=0; i<5; i++) {
+		for (int i=0; i<4; i++) {
 			for (int j=1; j<=5; j++) {
 				System.out.print(i * 5 + j + " ");
 			}
@@ -140,22 +140,35 @@ public class Ex1 {
 		// {4, 8, 10, 33, 6, 1, 12, 2, 13}
 		// {8, 6, 12, 2, 33, 1, 13, 4, 20}  위 배열과 다른값 찾기
 		int[] diffArr = {8, 6, 12, 2, 33, 1, 13, 4, 20};
+		int[] idx = new int[arr.length];
 		
+		StringBuilder sb = new StringBuilder();
 		System.out.print("서로 다른 수 찾기 : ");
+		
 		for (int k : diffArr) {
 			for (int i=0; i<arr.length; i++) {
 				if (arr[i] == k) {
+					idx[i]++;
 					break;
 				}
 				
-				if ((i == arr.length - 1) && (arr[i] != k)) {
-					System.out.print(k);
+				if (i == arr.length - 1) {
+					sb.append("diffArr = ").append(k).append(", ");
 				}
 			}
 		}
 		
+		for (int i=0; i<idx.length; i++) {
+			if (idx[i] == 0) {
+				sb.append("arr = ").append(arr[i]);
+			}
+		}
+		System.out.println(sb);
+		
+		
 		System.out.println();
 		System.out.println("-----------");
+		
 	}
 
 }
