@@ -40,8 +40,8 @@ public class Operator {
 		
 		System.out.println("------------------");
 		
-		System.out.println("비교 (==) : " + (10 == 10));
-		System.out.println("비교 (!=) : " + (20 != 20));
+//		System.out.println("비교 (==) : " + (10 == 10));
+//		System.out.println("비교 (!=) : " + (20 != 20));
 		
 		System.out.println("------------------");
 		
