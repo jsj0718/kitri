@@ -2,41 +2,51 @@ package oop6;
 
 public class Book {
 	/*
-	 * bookid		number
-	 * bookname		varchar2
+	 * bookID		number
+	 * bookName		varchar2
 	 * publisher	varchar2
 	 * price		number
 	 */
 	
-	int bookid;
-	String bookname;
+	int bookID;
+	String bookName;
 	String publisher;
 	int price;
 	
-	void select() {
-		System.out.println(bookid + "/t" 
-							+ bookname + "\t" 
-							+ publisher + "\t"
-							+ price);
-	}
+	// 기본 생성자 생략
+	// Book() {}
 	
-	void insert(int bookid, String bookname, String publisher, int price) {
-		this.bookid = bookid;
-		this.bookname = bookname;
+	Book(int bookID, String bookName, String publisher, int price) {
+		this.bookID = bookID;
+		this.bookName = bookName;
 		this.publisher = publisher;
 		this.price = price;
 	}
 	
-	void update(int bookid, String bookname) {
-		if (this.bookid == bookid) {
-			this.bookname = bookname;
+	void select() {
+		System.out.println(bookID + "\t" 
+							+ bookName + "\t" 
+							+ publisher + "\t"
+							+ price);
+	}
+	
+	void insert(int bookID, String bookName, String publisher, int price) {
+		this.bookID = bookID;
+		this.bookName = bookName;
+		this.publisher = publisher;
+		this.price = price;
+	}
+	
+	void update(int bookID, String bookName) {
+		if (this.bookID == bookID) {
+			this.bookName = bookName;
 		}
 	}
 	
-	void delete(int bookid) {
-		if (this.bookid == bookid) {
-			this.bookid = 0;
-			this.bookname = null;
+	void delete(int bookID) {
+		if (this.bookID == bookID) {
+			this.bookID = 0;
+			this.bookName = null;
 			this.price = 0;
 			this.publisher = null;
 		}
