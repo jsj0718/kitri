@@ -1,0 +1,2 @@
+module JavaCh7Prj {
+}
