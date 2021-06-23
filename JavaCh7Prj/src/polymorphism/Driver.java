@@ -6,12 +6,12 @@ public class Driver {
 	}
 	
 	public static void main(String args[]) {
-		Bus bus = new Bus();
-		Taxi taxi = new Taxi();
-		Truck truck = new Truck();
+		Car car = new Bus();
+		Car car1 = new Taxi();
+		Car car2 = new Truck();
 		
-		drive(bus);
-		drive(taxi);
-		drive(truck);
+		drive(car);
+		drive(car1);
+		drive(car2);
 	}
 }
