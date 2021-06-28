@@ -9,7 +9,7 @@ public class ScannerEx {
 		Scanner sc = new Scanner(System.in);
 		FileOutputStream fos = new FileOutputStream("src\\ioexample\\test", true);
 		
-		String str = sc.nextLine();
+		String str = sc.nextLine() + "\n";
 		fos.write(str.getBytes());
 		
 		sc.close();	

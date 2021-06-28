@@ -37,19 +37,26 @@ public class MadangMain {
 //		bf.updateBook(3, "오라클의 정석");
 //		bf.selectBook();
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("src\\madang\\data")));
-		
-		String line;
-		while ((line = br.readLine()) != null) {
-			String[] arr = line.split(", ");
+		BufferedReader br = null;
 			
-			Book book = new Book();
-			book.setBookID(Integer.parseInt(arr[0]));
-			book.setBookName(arr[1]);
-			book.setPublisher(arr[2]);
-			book.setPrice(Integer.parseInt(arr[3]));
-			
-			bf.insertBook(book);
+		try {
+			br = new BufferedReader(new InputStreamReader(new FileInputStream("src\\madang\\data")));			
+			String line;
+			while ((line = br.readLine()) != null) {
+				String[] arr = line.split(", ");
+				
+				Book book = new Book();
+				book.setBookID(Integer.parseInt(arr[0]));
+				book.setBookName(arr[1]);
+				book.setPublisher(arr[2]);
+				book.setPrice(Integer.parseInt(arr[3]));
+				
+				bf.insertBook(book);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) br.close();
 		}
 		
 		bf.selectBook();
