@@ -17,7 +17,7 @@ public class Client {
 		Socket socket = null;
 		try {
 			// 클라이언트 소켓이 서버소켓으로 접속한다.
-			socket = new Socket("192.168.0.219", 7777);
+			socket = new Socket("192.168.0.213", 7777);
 			
 			OutputStream os = socket.getOutputStream();
 			DataOutputStream dos = new DataOutputStream(os);
@@ -27,6 +27,7 @@ public class Client {
 			String id = sc.nextLine();
 			dos.writeUTF(id);
 			dos.flush();
+		
 			System.out.println("접속 완료");
 			
 			// 채팅 receive
@@ -46,13 +47,6 @@ public class Client {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				socket.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
-		
 	}
 }

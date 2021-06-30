@@ -10,6 +10,7 @@ public class Server {
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
 		Socket socket = null;
+		
 		try {
 			// 클라이언트 접속을 위한 서버소켓 생성 (방문 만들어주기)
 			serverSocket = new ServerSocket(7777);

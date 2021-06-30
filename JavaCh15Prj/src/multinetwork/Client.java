@@ -17,7 +17,7 @@ public class Client {
 		try {
 			// 서버 접속
 			System.out.println("-------클라이언트-------");
-			Scanner sc = new Scanner(System.in);
+//			Scanner sc = new Scanner(System.in);
 //			System.out.print("ID를 입력하세요.");
 //			String id = sc.nextLine();
 			
