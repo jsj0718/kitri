@@ -13,7 +13,7 @@ public class MainClass {
 			System.out.println("------------------------------");
 			System.out.println("고객 정보 관리 시스템");
 			System.out.println("1. 모든 고객 정보");
-			System.out.println("2. 한 명의 고객 정보(번호)");
+			System.out.println("2. 한 명의 고객 정보(이름)");
 			System.out.println("3. 고객 정보 추가");
 			System.out.println("4. 고객 정보 수정(번호)");
 			System.out.println("5. 고객 정보 삭제(번호)");
@@ -27,10 +27,12 @@ public class MainClass {
 			if (check == 1) {
 				clist = cf.selectCustomer();
 				print(clist);
+				
 			} else if (check == 2) {
-				System.out.print("고객 번호 입력: ");
-				int custID = sc.nextInt();
-				print(cf.selectCustomer(custID));
+				System.out.print("고객 이름 입력: ");
+				String name = sc.nextLine();
+				print(cf.selectCustomer(2, name));
+				
 			} else if (check == 3) {
 				System.out.print("고객 번호 입력: ");
 				int custID = sc.nextInt();
@@ -38,12 +40,14 @@ public class MainClass {
 				
 				System.out.print("고객 이름 입력: ");
 				String name = sc.nextLine();
+				
 				System.out.print("고객 주소 입력: ");
 				String address = sc.nextLine();
+				
 				System.out.print("고객 전화번호 입력: ");
 				String phone = sc.nextLine();
 				
-				if (cf.insertCustomer(custID, name, address, phone) == 1) {
+				if (cf.insertCustomer(custID, name, address, phone) > 0) {
 					System.out.println("고객 정보 입력 완료");
 				} else {
 					System.out.println("고객 정보 입력 실패");
@@ -53,27 +57,51 @@ public class MainClass {
 				System.out.print("고객 번호 입력: ");
 				int custID = sc.nextInt();
 				sc.nextLine();
-				System.out.print("수정할 고객 이름 입력: ");
-				String name = sc.nextLine();
-				System.out.print("수정할 고객 주소 입력: ");
-				String address = sc.nextLine();
-				System.out.print("수정할 고객 전화번호 입력: ");
-				String phone = sc.nextLine();
 				
-				if (cf.updateCustomer(custID, name, address, phone) == 1) {
+				System.out.println("수정할 내용 (1. 고객 이름, 2. 고객 주소, 3. 핸드폰 번호, 4. 전체 수정");
+				int updateItem = sc.nextInt();
+				sc.nextLine();
+				
+				String name = null;
+				String address = null;
+				String phone = null;
+				
+				if (updateItem == 1) {
+					System.out.print("수정할 고객 이름 입력: ");
+					name = sc.nextLine();					
+				} else if (updateItem == 2) {
+					System.out.print("수정할 고객 주소 입력: ");
+					address = sc.nextLine();
+				} else if (updateItem == 3) {
+					System.out.print("수정할 고객 전화번호 입력: ");
+					phone = sc.nextLine();					
+				} else if (updateItem == 4) {
+					System.out.print("수정할 고객 이름 입력: ");
+					name = sc.nextLine();
+					
+					System.out.print("수정할 고객 주소 입력: ");
+					address = sc.nextLine();
+					
+					System.out.print("수정할 고객 전화번호 입력: ");
+					phone = sc.nextLine();	
+				}
+				
+				if (cf.updateCustomer(custID, name, address, phone) > 0) {
 					System.out.println("고객 정보 수정 완료");
 				} else {
 					System.out.println("고객 정보 수정 실패");
 				}
+				
 			} else if (check == 5) {
 				System.out.print("고객 번호 입력: ");
 				int custID = sc.nextInt();
 				
-				if (cf.deleteCustomer(custID) == 1) {
+				if (cf.deleteCustomer(custID) > 0) {
 					System.out.println("고객 정보 삭제 완료");
 				} else {
 					System.out.println("고객 정보 삭제 실패");
 				}
+				
 			} else if (check == 6) {
 				break;
 			}

@@ -1,16 +1,16 @@
 package customer;
 
 public class CustomerVO {
-	private int bookID;
+	private int custID;
 	private String name;
 	private String address;
 	private String phone;
 	
-	public int getBookID() {
-		return bookID;
+	public int getCustID() {
+		return custID;
 	}
-	public void setBookID(int bookID) {
-		this.bookID = bookID;
+	public void setCustID(int custID) {
+		this.custID = custID;
 	}
 	public String getName() {
 		return name;
@@ -33,7 +33,7 @@ public class CustomerVO {
 	
 	@Override
 	public String toString() {
-		return "CustomerVO [bookID=" + bookID + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
+		return "CustomerVO [custID=" + custID + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
 	}
 	
 	

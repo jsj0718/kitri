@@ -45,7 +45,7 @@ public class CustomerFunction {
 			while(rs.next()) {
 				cvo = new CustomerVO();
 
-				cvo.setBookID(rs.getInt("CUSTID"));
+				cvo.setCustID(rs.getInt("CUSTID"));
 				cvo.setName(rs.getString("NAME"));
 				cvo.setAddress(rs.getString("ADDRESS"));
 				cvo.setPhone(rs.getString("PHONE"));
@@ -59,9 +59,53 @@ public class CustomerFunction {
 		return cvo;
 	}
 	
+	public ArrayList<CustomerVO> selectCustomer(int item, String search) {
+		String SQL = "SELECT * FROM CUSTOMER WHERE 1 = 1 ";
+		
+		if (item == 1) {	// custID
+			SQL += "AND CUTID = ?";
+		} else if (item == 2) {	// name
+			SQL += "AND NAME LIKE ?";
+		} else if (item == 3) {	// address
+			SQL += "AND ADDRESS LIKE ?";
+		} else if (item == 4) {	// phone
+			SQL += "AND PHONE LIKE ?";
+		}
+		
+		CustomerVO cvo = null;
+		ArrayList<CustomerVO> vlist = new ArrayList<CustomerVO>();
+		try {
+			conn = DBConnect.getConnection();
+			pstmt = conn.prepareStatement(SQL);
+			if (item == 1) {
+				pstmt.setInt(1, Integer.parseInt(search));
+			} else {
+				pstmt.setString(1, search);
+			}
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				cvo = new CustomerVO();
+
+				cvo.setCustID(rs.getInt("CUSTID"));
+				cvo.setName(rs.getString("NAME"));
+				cvo.setAddress(rs.getString("ADDRESS"));
+				cvo.setPhone(rs.getString("PHONE"));
+				
+				vlist.add(cvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(conn, pstmt, rs);
+		}
+		
+		return vlist;
+	}
+	
 	// 전체 고객 조회 (customer 테이블 전체 조회)
 	public ArrayList<CustomerVO> selectCustomer() {
-		String SQL = "SELECT * FROM CUSTOMER";
+		String SQL = "SELECT * FROM CUSTOMER ORDER BY CUSTID";
 		ArrayList<CustomerVO> clist = null;
 		try {
 			conn = DBConnect.getConnection();
@@ -71,7 +115,7 @@ public class CustomerFunction {
 			while(rs.next()) {
 				CustomerVO cvo = new CustomerVO();
 
-				cvo.setBookID(rs.getInt("CUSTID"));
+				cvo.setCustID(rs.getInt("CUSTID"));
 				cvo.setName(rs.getString("NAME"));
 				cvo.setAddress(rs.getString("ADDRESS"));
 				cvo.setPhone(rs.getString("PHONE"));
@@ -117,24 +161,45 @@ public class CustomerFunction {
 	// update
 	public int updateCustomer(int custID, String name, String address, String phone) {
 		// 실행 쿼리
-		String SQL = "UPDATE CUSTOMER "
-					+ "SET NAME = ?, "
-					+ "	   ADDRESS = ?, "
-					+ "    PHONE = ? "
-					+ "WHERE CUSTID = ?";
-	
+		String SQL = "UPDATE CUSTOMER SET";
+		
+		if (name != null) {
+			SQL += " NAME = ?,";
+		} 
+		if (address != null) {
+			SQL += " ADDRESS = ?,";
+		} 
+		if (phone != null) {
+			SQL += " PHONE = ?,";
+		}
+		
+		SQL = SQL.substring(0, SQL.length()-1);
+		SQL += " WHERE CUSTID = ?";
+		
+		System.out.println(SQL);
 		try {
 			// DBConnect로부터 conn 객체 받아오기
 			conn = DBConnect.getConnection();
 			// DB 쿼리 실행을 위한 PreparedStatement 객체 생성
 			pstmt = conn.prepareStatement(SQL);
 			
-			// ? 에 값 넣기
-			
-			pstmt.setString(1, name);
-			pstmt.setString(2, address);
-			pstmt.setString(3, phone);
-			pstmt.setInt(4, custID);
+			if (name != null && address == null && phone == null) {
+					pstmt.setString(1, name);					
+					pstmt.setInt(2, custID);
+			} else if (address != null && name == null && phone == null) {
+					pstmt.setString(1, address);									
+					pstmt.setInt(2, custID);
+			} else if (phone != null && name == null && address == null) {
+					pstmt.setString(1, phone);									
+					pstmt.setInt(2, custID);
+			} else {
+				// ? 에 값 넣기						
+				pstmt.setString(1, name);
+				pstmt.setString(2, address);
+				pstmt.setString(3, phone);
+				pstmt.setInt(4, custID);
+			}
+						
 			
 			// 쿼리 실행 및 결과값 저장
 			return pstmt.executeUpdate();
@@ -146,6 +211,8 @@ public class CustomerFunction {
 		
 		return -1;
 	}
+	
+	
 	
 	// delete
 	public int deleteCustomer(int custID) {
