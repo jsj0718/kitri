@@ -2,6 +2,8 @@ package booktest;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -35,6 +37,7 @@ public class BookFrame extends JFrame {
 	
 	BookDAO bdao = new BookDAO();
 	String item = "책번호";
+	int row;
 	
 	public BookFrame() {
 		this.setTitle("책 관리 시스템");
@@ -168,13 +171,12 @@ public class BookFrame extends JFrame {
 			}
 		});
 		
-		// 등록 버튼
+		// insert 버튼
 		registBtn.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {				
 				String[] bookColumns = new String[4];
-				bookColumns[0] = "";
 				bookColumns[1] = bookNameField.getText();
 				bookColumns[2] = publisherField.getText();
 				bookColumns[3] = priceField.getText();
@@ -211,6 +213,11 @@ public class BookFrame extends JFrame {
 				bvo.setPublisher(publisherField.getText());
 				bvo.setPrice(Integer.parseInt(priceField.getText()));
 				
+				int seq = bdao.selectBookSeq();
+				
+				bookIdField.setText(String.valueOf(seq));
+				bookColumns[0] = bookIdField.getText();
+				
 				if (bdao.insert(bvo) > 0) {;
 					JOptionPane.showConfirmDialog(null, "등록에 성공했습니다.", 
 							"성공", JOptionPane.DEFAULT_OPTION);
@@ -226,6 +233,103 @@ public class BookFrame extends JFrame {
 					publisherField.setText("");
 					priceField.setText("");
 					bookNameField.requestFocus();
+				}
+			}
+		});
+		
+		
+		// 클릭하여 수정할 값 가져오기
+		bookTable.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			
+			// 클릭하여 값 가져오기
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// 행, 열 가져오기
+//				System.out.println(bookTable.getSelectedRow());
+//				System.out.println(bookTable.getSelectedColumn());
+				
+				// 행, 열을 이용해 값 가져오기
+//				String selectVal = bookTable.getValueAt(bookTable.getSelectedRow(), 
+//						bookTable.getSelectedColumn()).toString();
+				
+				row = bookTable.getSelectedRow();
+				
+				String bookID = bookTable.getValueAt(row, 0).toString();
+				String bookName = bookTable.getValueAt(row, 1).toString();
+				String publisher = bookTable.getValueAt(row, 2).toString();
+				String price = bookTable.getValueAt(row, 3).toString();
+				
+				bookIdField.setText(bookID);
+				bookNameField.setText(bookName);
+				publisherField.setText(publisher);
+				priceField.setText(price);
+				
+				
+			}
+		});
+		
+		// update 버튼
+		updateBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				BookVO bvo = new BookVO();
+				bvo.setBookID(Integer.parseInt(bookIdField.getText()));
+				bvo.setBookName(bookNameField.getText());
+				bvo.setPublisher(publisherField.getText());
+				bvo.setPrice(Integer.parseInt(priceField.getText()));
+				
+				int result = bdao.update(bvo);
+				
+				if (result > 0) {
+					JOptionPane.showConfirmDialog(null, "수정되었습니다.", 
+							"확인", JOptionPane.DEFAULT_OPTION);
+					bookTable.setValueAt(bookNameField.getText(), row, 1);
+					bookTable.setValueAt(publisherField.getText(), row, 2);
+					bookTable.setValueAt(priceField.getText(), row, 3);
+					
+					initVal();
+				} else {
+					JOptionPane.showConfirmDialog(null, "수정하는데 실패했습니다.", 
+							"경고", JOptionPane.DEFAULT_OPTION);
+				}
+				
+				bookTable.clearSelection();
+			}
+		});
+		
+		// delete 버튼
+		deleteBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int result = bdao.delete(Integer.parseInt(bookIdField.getText()));
+				
+				if (result > 0) {
+					JOptionPane.showConfirmDialog(null, "삭제되었습니다.", 
+							"확인", JOptionPane.DEFAULT_OPTION);
+					bookDTM.removeRow(row);
+					initVal();		
+				} else {
+					JOptionPane.showConfirmDialog(null, "삭제하는데 실패했습니다.", 
+							"경고", JOptionPane.DEFAULT_OPTION);
 				}
 			}
 		});
@@ -247,6 +351,13 @@ public class BookFrame extends JFrame {
 			
 			bookDTM.addRow(bookColumns);
 		}
+	}
+	
+	public void initVal() {
+		bookIdField.setText("");
+		bookNameField.setText("");
+		publisherField.setText("");
+		priceField.setText("");
 	}
 	
 	public static void main(String[] args) {
