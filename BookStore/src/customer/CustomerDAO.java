@@ -4,272 +4,128 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import dbcon.DBConnect;
+import dbcon.DBconnect;
 
 public class CustomerDAO {
-	Connection conn = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	// 스트림 닫는 메소드 선언 - 1
-	public void closeAll(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+
+	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection conn) {
 		try {
-			if (rs != null && !rs.isClosed()) rs.close();
-			if (pstmt != null && !pstmt.isClosed()) pstmt.close();
-			if (conn != null && !conn.isClosed()) conn.close();
-		} catch (SQLException e) {
+			if (rs != null && !rs.isClosed()) {
+				rs.close();
+			}
+			if (pstmt != null && !pstmt.isClosed()) {
+				pstmt.close();
+			}
+			if (conn != null && !conn.isClosed()) {
+				conn.close();
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	// 스트림 닫는 메소드 선언 - 2
-	public void closeAll(Connection conn, PreparedStatement pstmt) {
-		try {
-			if (pstmt != null && !pstmt.isClosed()) pstmt.close();
-			if (conn != null && !conn.isClosed()) conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	// custID 조회
+
 	public int idCheck(String custId) {
-		String SQL = "SELECT COUNT(*) FROM CUSTOMER WHERE CUSTID = ?";
+		String sql = "SELECT count(*) FROM CUSTOMER WHERE CUSTID = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
 		int result = 0;
 		try {
-			conn = DBConnect.getInstance();
-			pstmt = conn.prepareStatement(SQL);
+			conn = DBconnect.getInstance();
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, custId);
-			
+
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) { // 하나의 레코드(행)을 지시함
 				result = rs.getInt(1);
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			closeAll(conn, pstmt, rs);
+			closeAll(rs, pstmt, conn);
 		}
 		return result;
 	}
-	
-	// custID로 한 명의 고객 조회
-	public CustomerVO selectCustomer(String CUSTID) {
-		String SQL = "SELECT * FROM CUSTOMER WHERE CUSTID = ?";
-		CustomerVO cvo = null;
-		try {
-			conn = DBConnect.getInstance();
-			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, CUSTID);
-			
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				cvo = new CustomerVO();
 
-				cvo.setCustID(rs.getString("CUSTID"));
-				cvo.setPassword(rs.getString("PASSWORD"));
-				cvo.setName(rs.getString("NAME"));
-				cvo.setAddress(rs.getString("ADDRESS"));
-				cvo.setPhone(rs.getString("PHONE"));
+	public int login(CustomerVO cvo) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+//		Statement stmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+
+			conn = DBconnect.getInstance();
+			String quary = "SELECT COUNT(*) FROM CUSTOMER WHERE CUSTID = ? and PWD =?";
+			pstm = conn.prepareStatement(quary);
+			pstm.setString(1, cvo.getCustId());
+			pstm.setString(2, cvo.getPwd());
+
+			rs = pstm.executeQuery();
+
+			while (rs.next()) {
+				result = rs.getInt(1);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+
 		} finally {
-			closeAll(conn, pstmt, rs);
-		}
-		
-		return cvo;
-	}
 
-//	public ArrayList<CustomerVO> selectCustomer(int item, String search) {
-//		String SQL = "SELECT * FROM CUSTOMER WHERE 1 = 1 ";
-//		
-//		if (item == 1) {	// custID
-//			SQL += "AND CUTID = ?";
-//		} else if (item == 2) {	// name
-//			SQL += "AND NAME LIKE ?";
-//		} else if (item == 3) {	// address
-//			SQL += "AND ADDRESS LIKE ?";
-//		} else if (item == 4) {	// phone
-//			SQL += "AND PHONE LIKE ?";
-//		}
-//		
-//		CustomerVO cvo = null;
-//		ArrayList<CustomerVO> vlist = new ArrayList<CustomerVO>();
-//		try {
-//			conn = DBConnect.getInstance();
-//			pstmt = conn.prepareStatement(SQL);
-//			if (item == 1) {
-//				pstmt.setInt(1, Integer.parseInt(search));
-//			} else {
-//				pstmt.setString(1, search);
-//			}
-//			
-//			rs = pstmt.executeQuery();
-//			while(rs.next()) {
-//				cvo = new CustomerVO();
-//
-//				cvo.setCustID(rs.getString("CUSTID"));
-//				cvo.setName(rs.getString("NAME"));
-//				cvo.setAddress(rs.getString("ADDRESS"));
-//				cvo.setPhone(rs.getString("PHONE"));
-//				
-//				vlist.add(cvo);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			closeAll(conn, pstmt, rs);
-//		}
-//		
-//		return vlist;
-//	}
-	
-	// 전체 고객 조회 (customer 테이블 전체 조회)
-	public ArrayList<CustomerVO> selectCustomer() {
-		String SQL = "SELECT * FROM CUSTOMER";
-		ArrayList<CustomerVO> clist = null;
-		try {
-			conn = DBConnect.getInstance();
-			pstmt = conn.prepareStatement(SQL);
-			rs = pstmt.executeQuery();
-			clist = new ArrayList<CustomerVO>();
-			while(rs.next()) {
-				CustomerVO cvo = new CustomerVO();
-
-				cvo.setCustID(rs.getString("CUSTID"));
-				cvo.setPassword(rs.getString("PASSWORD"));
-				cvo.setName(rs.getString("NAME"));
-				cvo.setAddress(rs.getString("ADDRESS"));
-				cvo.setPhone(rs.getString("PHONE"));
-				
-				clist.add(cvo);
+			try {
+				if (rs != null && !rs.isClosed()) {
+					rs.close();
+				}
+				if (pstm != null && !pstm.isClosed()) {
+					pstm.close();
+				}
+				if (conn != null && !conn.isClosed()) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(conn, pstmt, rs);
 		}
-		return clist;
+		return result;
 	}
-	
-	// insert
-	public int insertCustomer(String custID, String password, String name, String address, String phone) {
-		String SQL = "INSERT INTO CUSTOMER (CUSTID, PASSWORD, NAME, ADDRESS, PHONE) "
-				+ "VALUES (?, ?, ?, ?, ?)";
+
+	public int insertCustomer(CustomerVO cvo) {
+		Connection conn = null;
+		PreparedStatement pstm = null;
+		int result = 0;
 		try {
-			// DBConnect로부터 conn 객체 받아오기
-			conn = DBConnect.getInstance();
-			// DB 쿼리 실행을 위한 PreparedStatement 객체 생성
-			pstmt = conn.prepareStatement(SQL);
-						
-			// ? 에 값 넣기
-			pstmt.setString(1, custID);
-			pstmt.setString(2, password);
-			pstmt.setString(3, name);
-			pstmt.setString(4, address);
-			pstmt.setString(5, phone);
-			
-			// 쿼리 실행 및 결과값 리턴
-			return pstmt.executeUpdate();
-	
-		} catch (SQLException e) {
-			e.printStackTrace();
+			conn = DBconnect.getInstance();
+			String quary = "INSERT into customer (custid, pwd, name, address, phone)" 
+						+ " values (?,?,?,?,?)";
+//			stmt = conn.createStatement();
+//			rs = stmt.executeUpdate(sql)
+			pstm = conn.prepareStatement(quary);
+			pstm.setString(1, cvo.getCustId());
+			pstm.setString(2, cvo.getPwd());
+			pstm.setString(3, cvo.getName());
+			pstm.setString(4, cvo.getAddress());
+			pstm.setString(5, cvo.getPhone());
+			result = pstm.executeUpdate();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+
 		} finally {
-			closeAll(conn, pstmt);
-		}
-		
-		return -1;
-	}
-	
-	// update
-	public int updateCustomer(String custID, String password, String name, String address, String phone) {
-		// 실행 쿼리
-		String SQL = "UPDATE CUSTOMER SET";
-		
-		if (password != null) {
-			SQL += " PASSWORD = ?,";
-		} 
-		if (name != null) {
-			SQL += " NAME = ?,";
-		} 
-		if (address != null) {
-			SQL += " ADDRESS = ?,";
-		} 
-		if (phone != null) {
-			SQL += " PHONE = ?,";
-		}
-		
-		SQL = SQL.substring(0, SQL.length()-1);
-		SQL += " WHERE CUSTID = ?";
-		
-		System.out.println(SQL);
-		try {
-			// DBConnect로부터 conn 객체 받아오기
-			conn = DBConnect.getInstance();
-			// DB 쿼리 실행을 위한 PreparedStatement 객체 생성
-			pstmt = conn.prepareStatement(SQL);
-			
-			if (password != null && name == null && address == null && phone == null) {
-				pstmt.setString(1, password);					
-				pstmt.setString(2, custID);
-			} else if (name != null && address == null && phone == null && password == null) {
-				pstmt.setString(1, name);					
-				pstmt.setString(2, custID);
-			} else if (address != null && name == null && phone == null && password == null) {
-				pstmt.setString(1, address);									
-				pstmt.setString(2, custID);
-			} else if (phone != null && name == null && address == null && password == null) {
-				pstmt.setString(1, phone);									
-				pstmt.setString(2, custID);
-			} else {
-				// ? 에 값 넣기	
-				pstmt.setString(1, password);
-				pstmt.setString(2, name);
-				pstmt.setString(3, address);
-				pstmt.setString(4, phone);
-				pstmt.setString(5, custID);
+
+			try {
+				if (pstm != null && !pstm.isClosed()) {
+					pstm.close();
+				}
+				if (conn != null && !conn.isClosed()) {
+					conn.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-						
-			
-			// 쿼리 실행 및 결과값 저장
-			return pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(conn, pstmt);
 		}
-		
-		return -1;
+		return result;
 	}
-	
-	
-	
-	// delete
-	public int deleteCustomer(String custID) {
-		String SQL = "DELETE FROM CUSTOMER "
-				+ "WHERE CUSTID = ?";
-		try {					
-			// DBConnect로부터 conn 객체 받아오기
-			conn = DBConnect.getInstance();
 
-			// DB 쿼리 실행을 위한 PreparedStatement 객체 생성
-			pstmt = conn.prepareStatement(SQL);
-			
-			// ? 에 값 넣기
-			pstmt.setString(1, custID);
-			
-			// 쿼리 실행 및 결과값 저장
-			return pstmt.executeUpdate();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeAll(conn, pstmt);
-		}
-		
-		return -1;
-	}
 }

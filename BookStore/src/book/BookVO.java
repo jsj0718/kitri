@@ -1,16 +1,20 @@
 package book;
 
-public class BookVO {
-	private int bookID;
+import java.io.Serializable;
+
+public class BookVO implements Serializable{
+	private int bookId;
 	private String bookName;
 	private String publisher;
 	private int price;
+	private String imgPath;
 	
-	public int getBookID() {
-		return bookID;
+	
+	public int getBookId() {
+		return bookId; 
 	}
-	public void setBookID(int bookID) {
-		this.bookID = bookID;
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
 	}
 	public String getBookName() {
 		return bookName;
@@ -30,4 +34,12 @@ public class BookVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public String getImgPath() {
+		return imgPath;
+	}
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+	
+	
 }

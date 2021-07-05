@@ -2,24 +2,30 @@ package customer;
 
 import java.io.Serializable;
 
-public class CustomerVO implements Serializable {
-	private String custID;
-	private String password;
+public class CustomerVO implements Serializable{
+	
+	private String custId;
+	private String pwd;
 	private String name;
 	private String address;
 	private String phone;
-
-	public String getCustID() {
-		return custID;
+	
+	
+	@Override
+	public String toString() {
+		return "[custId=" + custId + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
 	}
-	public void setCustID(String custID) {
-		this.custID = custID;
+	public String getCustId() {
+		return custId;
 	}
-	public String getPassword() {
-		return password;
+	public void setCustId(String custId) {
+		this.custId = custId;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	public String getName() {
 		return name;
@@ -40,10 +46,6 @@ public class CustomerVO implements Serializable {
 		this.phone = phone;
 	}
 	
-	@Override
-	public String toString() {
-		return "CustomerVO [custID=" + custID + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
-	}
 	
 	
 	

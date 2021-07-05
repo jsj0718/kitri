@@ -5,20 +5,20 @@ import java.util.ArrayList;
 
 import customer.CustomerVO;
 
-// Á÷·ÄÈ­ ÁøÇà
-public class CustomerMessage implements Serializable {
-	// state - select, insert, update, delete
+public class CustomerMessage implements Serializable, Message{ 
+	//state - insert, update, delete, select
 	private int state;
 	
-	// °á°ú°ª - insert, update, delete : int / select : int
+	//°á°ú°ª - insert,update,delete : int
+	//       select : int
 	private int result;
 	
-	// °í°´ °´Ã¼
+	//°í°´ °´Ã¼
 	private CustomerVO cvo;
 	
-	// °í°´ °´Ã¼ ¸®½ºÆ®
+	//°í°´ ¸®½ºÆ®
 	private ArrayList<CustomerVO> clist;
-
+	
 	public int getState() {
 		return state;
 	}
@@ -50,6 +50,10 @@ public class CustomerMessage implements Serializable {
 	public void setClist(ArrayList<CustomerVO> clist) {
 		this.clist = clist;
 	}
+	
+	
+	
+	
 	
 	
 }
