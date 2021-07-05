@@ -4,48 +4,46 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-//싱글톤 디자인 패턴 사용
+// 싱글톤 디자인 패턴
 public class DBconnect {
+//	private static DBConnect singleton = null;
+	private static Connection conn = null;
 	
-//	private static DBconnect singleton = null;
-	private static Connection conn;
-	
-	private DBconnect() {}
+	private DBconnect() {
+		
+	}
 	
 	public static Connection getInstance() {
-		//계정
+		// 계정
 		String user = "madang";
-		//비밀번호
+		// 비밀번호
 		String password = "madang";
-		//접속 url
-		String url = "jdbc:oracle:thin:@localhost:1521:xe"; 
+		// url
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		
 		try {
-			if(conn !=null && !conn.isClosed()) {
+			if (conn != null && !conn.isClosed()) {
 				return conn;
 			}
-			//드라이버로딩
+			// 드라이버 로딩
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException e) {
-			System.out.println("ojdbc.jar 이 없습니다.(드라이버가 존재하지 않습니다.)");
+			System.out.println("ojdbc.jar가 없습니다. (드라이버가 존재하지 않습니다.)");
 			e.printStackTrace();
 		} catch (SQLException e) {
-			System.out.println("url,user,password 및 데이터베이스가 켜져있는지 확인하세요.");
+			System.out.println("url, user, password 및 DB가 켜져있는지 확인하세요.");
 			e.printStackTrace();
 		}
+			
 		return conn;
 	}
 	
-	
-	
-//	public static DBconnect getInstance() {
-//		if(singleton == null) {
-//			singleton = new DBconnect();
+//	public static DBConnect getInstance() {
+//		if (singleton == null) {
+//			singleton = new DBConnect();
 //		}
 //		
 //		return singleton;
 //	}
-	
-	
-	
 }
