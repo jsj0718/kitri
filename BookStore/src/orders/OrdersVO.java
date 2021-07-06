@@ -12,6 +12,7 @@ public class OrdersVO implements Serializable {
 	private int salePrice;
 	private Date orderDate;
 	private int count;
+	
 	public int getOrderId() {
 		return orderId;
 	}
