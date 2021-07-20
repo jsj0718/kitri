@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		width : 200px;
+		height : 200px;
+		border : 1px solid #222;
+		display : inline-block;
+	}
+	
+	/* 마진은 중첩된다. (큰 값에 맞춰진다.) */
+	/* 마진을 auto로 설정하면 가운데 정렬이 된다. */
+	
+	#box1 {
+/* 		margin-bottom : 10px; */
+/* 		margin-left : 20px; */
+		margin : 0 auto /* 블럭 형태일 때 가운데 정렬 */
+	}
+	
+	#box2 {
+		margin-top : 50px;
+	}
+	
+	#box3 {
+		margin : 10px;
+	}
+</style>
+</head>
+<body>
+	<div id="box1">
+		box1
+	</div>
+	
+	<div id="box2">
+		box2
+	</div>
+	
+	<div id="box3">
+		box3
+	</div>
+</body>
+</html>

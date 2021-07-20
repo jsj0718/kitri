@@ -13,7 +13,7 @@
 		background-color: #006699;
 		color: white;
 		line-height: 50px;
-		font-size: 10px;
+		padding-left : 10px;
 	}
 	
 	section {
@@ -21,26 +21,35 @@
 	}
 	
 	article {
-		width : 600px;
+		width : 90%;
 /* 		border : 1px solid blue; */
+		margin : 20px auto;
+		padding-left : 10px;
+	}
+	
+	aside {
+		width : 90%;
+/* 		border : 1px solid blue; */
+		margin : 20px auto;
+/* 		padding-left : 10px; */
 	}
 	
 	#pet1 {
 		border: 1px solid black;
 		border-radius : 5px;
-		margin : 10px;
+/* 		margin : 10px; */
 	}
 	
 	#pet2 {
 		border: 1px dotted #4936EF;
 		border-radius: 15px;
-		margin: 10px;
+/* 		margin: 10px; */
 	}
 	
 	#pet3 {
 		border: 1px solid green;
 		border-radius: 20px 0 20px 0;
-		margin: 10px;
+/* 		margin: 10px; */
 	}
 	
 	dt {
@@ -50,8 +59,8 @@
 	
 	footer {
 		background-color : black;
-		text-align : center;
 		color : white;
+		text-align : center;
 		height : 40px;
 		line-height : 40px;
 	}
@@ -59,6 +68,17 @@
 	p {
 		margin : 0;
 	}
+	
+	.img-icon {
+		background-image : url('img/bg.png');
+		background-repeat : no-repeat;
+		background-position : left center;
+		padding-left : 30px;
+	}
+	
+
+
+	
 	
 </style>
 </head>
@@ -69,7 +89,7 @@
 	
 	<section>
 		<article id="pet1">
-			<h3>활달한 강아지</h3>
+			<h3 class="img-icon">활달한 강아지</h3>
 			<dl>
 				<dt>요크셔 테리어</dt>
 				<dd>생기있고 활달한 성질을 가지고 있으며 자신보다 몸집이 큰 개나 집에 들어온 침입자를 겁내는 일이 없어 좋은 번견이고 우리나라 최고의의 가정견으로 자리 잡고 있다.</dd>
@@ -89,7 +109,7 @@
 		</article>
 		
 		<article id="pet2">
-			<h3>온순한강아지</h3>
+			<h3 class="img-icon">온순한강아지</h3>
 			<dl>
 				<dt>쉬즈</dt>
 				<dd>얼굴에서 풍기는 모습처럼 온순, 쉽게 친숙해지고 우호적이며,어린아이나 여성들이 기르기에 적합한 견종이다.</dd>
@@ -105,7 +125,7 @@
 		</article>
 		
 		<article id="pet3">
-			<h3>사납지만 복종적인 강아지</h3>
+			<h3 class="img-icon">사납지만 복종적인 강아지</h3>
 			<dl>
 				<dt>미니어쳐핀셔</dt>
 				<dd>경계심이 강하고 영리하며 작은 몸집에 비해 매우 용감하다. 주인에게 매우 복종적이며 작은 몸집에 보디가드 역할을 충실히 수행한다.</dd>
@@ -120,7 +140,7 @@
 			</dl>
 		</article>
 		
-		<article id="pet4">
+		<aside id="pet4">
 				건강한 강아지는 <br>
 			<ul>
 				<li>코가 젖어있고 눈꼽이 없어야 합니다.</li>
@@ -129,7 +149,7 @@
 				<li>가장 활발하게 움직이는 녀석을 고르는게 좋습니다.</li>
 				<li>강아지들 중에서 적당한 체구를 유지한 강아지가 좋습니다.</li>
 			</ul>
-		</article>
+		</aside>
 	</section>
 
 	<footer>
