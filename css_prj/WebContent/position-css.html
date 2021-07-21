@@ -4,11 +4,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	/* position : relative는 한 요소가 아닌 브라우저의 모든 요소에 대한 상대적인 위치이다.*/
+	
 	body {
 		height : 2000px;
 	}
 	
 	div {
+		display : inline-block;
 		width: 100px;
 		height: 100px;
 		border : 1px solid #222;
@@ -22,33 +25,33 @@
 	}
 	
 	#box1 {
-		position: absolute;
-		left: 0;
-		top: 0;
+		position: relative;
+		left: 10px;
+		top: 10px;
 	}
 	
 	#box2 {
-		position: absolute;
-		right: 0;
-		top: 0;
+		position: relative;
+		left: 10px;
+		top: 10px;
 	}
 	
 	#box3 {
-		position: absolute;
-		right: 0;
-		bottom: 0;
+		position: relative;
+		left: 10px;
+		top: 10px;
 	}
 	
 	#box4 {
-		position: absolute;
-		left: 0;
-		bottom: 0;
+		position: relative;
+		left: 10px;
+		top: 10px;
 	}
 	
 	#box5 {
-		position: fixed;
-		right: 0;
-		top: 100px;
+		position: relative;
+		left: 10px;
+		top: 10px;
 		
 	}
 </style>

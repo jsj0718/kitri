@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/* 동작되는 순서가 바뀌면 작동하지 않을 수 있다.
+	link
+	visited
+	active
+	hover
+	*/
+	
+	a {
+/* 		display: table-cell; */
+		display:inline-block;
+		width: 150px;
+/* 		height: 50px; */
+		padding-top: 10px;
+		padding-bottom: 10px; 
+		border: 1px solid #222;
+		text-align: center;
+		vertical-align: middle;
+	}
+	
+	a:link, a:visited {		/* 방문 전, 방문 후 링크 */
+		color: black;
+		text-decoration: none;
+	}
+	
+/* 	a:visited { */
+/* 		color: black; */
+/* 		text-decoration: none; */
+/* 	} */
+	
+	a:hover {
+		color: white;
+		background-color: #222;
+	}
+	
+	a:active {
+		color: red;
+		background-color: yellow;
+	}
+	
+	a:focus {
+		color: blue;
+	}
+	
+	input[type="text"] {
+		background-color: #DDE7E4;
+	}
+	
+	input[type="text"]:focus {
+		background-color: white;
+	}
+	
+	input[type="password"]:enabled {
+		background-color: #DDE7E4;
+	}
+	
+	input[type="password"]:disabled {
+		background-color: black;
+	}
+	
+	input[type="checkbox"]:checked+label {
+		color: red;
+	}
+	
+	div:nth-last-child(2n+1) {
+		background-color: black;
+		color:white;
+	}
+	
+</style>
+</head>
+<body>
+	<a href="#">가상클래스 테스트</a> <br>
+	focus 테스트 : <input type="text"> <br>
+	en, dis 테스트 : <input type="password" disabled> <br>
+	checked 테스트 :
+	<input type="checkbox" name="a"> <label>체크1</label>
+	<input type="checkbox" name="a"> <label>체크2</label>
+	
+	<div>box1</div>
+	<div>box2</div>
+	<div>box3</div>
+	<div>box4</div>
+	<div>box5</div>
+	<div>box6</div>
+	
+	
+</body>
+</html>

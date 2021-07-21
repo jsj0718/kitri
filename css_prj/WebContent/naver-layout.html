@@ -4,78 +4,79 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-   div{
-      border: 1px solid #222;
-      box-sizing: border-box;
-      
-   }
-   body{
-      width: 1000px;
-      
-   }
    
-   #search{
-      width: 100%;
-      height: 100px;
-   }
-   #menu{
-      width: 100%;
-      height: 50px;
-   }
-   
-   #main-ads{
-      width: 680px;
-      height: 100px;
-      float: left;
-   }
-   #login{
-   
-      width: 300px;
-      height: 100px;
-      float: right;
-   }
-   
-   #news-menu{
-      width: 680px;
-      height: 50px;
-      float: left;
-   }
-   #stock{
-      width:300px;
-      height: 50px;
-      float: right;
-   }
-   
-   #news{
-      width: 680px;
-      height: 200px;
-      float: left;
-   
-   }
-   #sub-ads{
-      width: 300px;
-      height: 120px;
-      float: right;
-   }
-   #section{
-      width: 680px;
-      height: 500px;
-      float: left;
-   }
-   #shopping{
-      width: 300px;
-      height: 250px;
-      float: right;
-   }
-   #shopping-news{
-      width: 300px;
-      height: 80px;
-      float: right;
-   }
-   #footer{
-      width: 100%;
-      clear: left;
-   }
+	div{
+		margin:5px;
+	}
+	#container {
+		width: 810px;
+		margin: 0 auto;
+				
+	}
+	#search {
+		width: 800px;
+		height: 100px;
+		background-color: #FEFEDE;
+	}
+	#menu {
+		width: 800px;
+		height: 40px;
+		background-color: #E4E5D9;
+	}
+	#main-ads{
+		width: 595px;
+		height: 100px;
+		background-color: #D6D6D2;
+		float: left
+	}
+	
+	#login {
+		width: 195px;
+		height: 100px;
+		background-color: #E3F8CB;
+		float: right;
+	}
+	
+	#sub-ads {
+		width: 195px;
+		height: 150px;
+		background-color: #DBE2D3;
+		float: right;
+	}
+	
+	#news {
+		width: 595px;
+		height: 400px;
+		background-color: #DCCFC5;
+		float: left;
+	}
+	#contents{
+		width: 595px;
+		height: 600px;
+		background-color: #F2FBE7;
+		float: left;
+	}
+	#shopping{
+		width: 195px;
+		height: 400px;
+		background-color: yellow;
+		float: right;
+	}
+	#shop-news{
+		width: 195px;
+		height: 440px;
+		background-color: #F3CBD6;
+		float: right;
+	}
+	#footer{
+		clear: both;
+		width: 800px;
+		height: 200px;
+		background-color: #E3A3F3;
+	}
+
+
+
    
   
 </style>
@@ -83,17 +84,18 @@
 
 </head>
 <body>
-	<div id="search">검색창</div>
-	<div id="menu">메뉴</div>
-	<div id="main-ads">메인 광고</div>
-	<div id="login">로그인</div>
-	<div id="news-menu">뉴스 메뉴</div>
-	<div id="stock">주식</div>
-	<div id="news">뉴스</div>
-	<div id="sub-ads">서브광고</div>
-	<div id="section">경제M</div>
-	<div id="shopping">쇼핑</div>
-	<div id="shopping-news">쇼핑 뉴스</div>
-	<div id="footer">Footer</div>
+	<!-- 채워지는 순서대로 입력 (순서가 중요) -->
+	<div id="container">
+		<div id="search">검색창</div>
+		<div id="menu">메뉴</div>
+		<div id="main-ads">메인 광고</div>
+		<div id="login">로그인</div>
+		<div id="sub-ads">서브광고</div>
+		<div id="news">뉴스</div>
+		<div id="shopping">쇼핑</div>
+		<div id="contents">내용</div>
+		<div id="shop-news">쇼핑 뉴스</div>
+		<div id="footer">Footer</div>	
+	</div>
 </body>
 </html>
