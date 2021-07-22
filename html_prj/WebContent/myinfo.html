@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	* {
+/* 		margin : 0; */
+/* 		padding : 0; */
+	}
+	
+	header {
+		height : 300px;
+		background-color : black;
+		color : white;
+	}
+	
+	nav {
+/* 		width : 80%; */
+		margin : 0 auto;
+/* 		border : 1px solid black; */
+		padding : 15px;
+/* 		text-align : center; */
+	}
+	
+	figure {
+		width : 300px;
+		margin : 0 auto;
+	}
+	
+	section {
+/* 		width : 80%; */
+		margin : 0 auto;
+		border : 1px solid #222;
+/* 		text-align : center; */
+		padding : 15px;
+		clear : both;
+	}
+	
+	ul {
+/* 		list-style-type: none; */
+	}
+	
+	h1 {
+		text-align : center;
+		margin : 20px;
+		font-size : 2em;
+	}
+	
+	table {
+		margin : 0 auto;
+	}
+	
+	footer {
+		margin : 0 auto;
+		text-align : center;
+	}
+	
+	.black-box {
+		background-color : black;
+		color : white;
+	}
+	
+	.white-box {
+		background-color : white;
+		color : black;
+	}
+	
+	
+	
+	#footer-box {
+		width : 80%;
+		margin : 0 auto;
+		font-size : 13px;
+	}
+	
+	#header-box {
+		width : 80%;
+		margin : 0 auto;
+		text-align : center;
+	}
+	
+	h2 {
+		color : skyblue;
+		text-align : center;
+	}
+	
+	.list-box {
+		width : 400px;
+		margin : 0 auto;
+	}
+	
+	#menu {
+		margin: 0;
+		padding: 0;
+	}
+	
+	#menu li {
+		padding : 10px;
+		list-style-type: none;
+		float:left;
+		border: 1px solid #222;
+		width: 100px;
+	}
+	
+	a {
+		text-decoration: none;
+		color : black;
+	}
+	
+	p {
+		text-align : center;
+	}
+	
+	iframe {
+		margin : 0 auto;
+	}
+	
+	.list-box{
+		width: 300px;
+		margin: 0 auto;
+		
+	}
+	a{
+		box-sizing: border-box;
+		display: block;
+		width: 120px;
+		padding: 10px;
+		text-decoration: none;
+		color: white;
+		background-color: #585858;
+		
+	}
+	
+	
+	#menu{
+		margin: 0;
+		padding: 0;
+	}
+	
+	nav {
+		width: 604px;
+		margin: 0 auto;	
+		padding: 0;
+	}
+	
+	#menu li{
+		box-sizing:border-box;
+		list-style-type: none;
+		float: left;
+		text-align: center;
+		border-right: 1px solid white;
+	}
+	
+	#menu li:last-child{
+		border-right-style: none;
+	}
+	
+	#menu li a:hover{
+		background-color: #F5F6C3;
+		color: black;
+	}
+
+	
+</style>
+</head>
+<body>
+	<header>
+		<div id="header-box">
+			<h1>My Page</h1>
+			<figure>
+				<img src="./img/joker.gif" alt="나의 이미지" width="300" height="180">
+				<figcaption>항상 웃으면서 개발하는 개발자입니다.</figcaption>
+			</figure>
+			
+			<p>본캐 : 정세진 / 부캐 : 정대만</p>
+		</div>
+	</header>
+		
+	
+	<nav>
+		<h2>목차</h2>
+		<ul id="menu">
+			<li> <a href="#menu1"> Who am I? </a> </li>
+			<li> <a href="#menu2">Experiences </a> </li>
+			<li> <a href="#menu3">Skill</a> </li>
+			<li> <a href="#menu4">Education</a> </li>
+			<li> <a href="#menu5">Intro</a> </li>
+		</ul>
+	</nav>
+	
+	<section class="black-box">
+	<h2 id="menu1">Who am I?</h2>
+	<p>
+		현재 Java Swing을 이용한 프로젝트를 진행한 경험이 있습니다. <br>
+		이 프로젝트에서 DB 설계, 객체지향 개발, 소켓 통신 등을 경험해봤습니다. <br>
+		앞으로 웹 개발을 배우면서 더 많은 프로젝트를 할 계획입니다.
+	</p>
+	</section>
+
+	<section class="white-box">
+	<h2 id="menu2">Experience</h2>
+	<div class="list-box">
+		<ul>
+			<li>프론트엔드 개발
+				<ul>
+					<li>자바 스윙</li>
+				</ul>
+			</li>
+		</ul>
+	
+		<ul>
+			<li>백엔드 개발
+				<ul>
+					<li>db테이블 생성, 관리</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	</section>
+	
+	<section class="black-box">
+		<h2 id="menu3">Skills</h2>
+		<div class="list-box">
+			<ul>
+				<li>오라클 데이터베이스</li>
+				<li>자바 network Program</li>
+				<li>Html5</li>
+				<li>css3</li>
+				<li>JavaScript</li>
+			</ul>
+		
+		</div>
+
+	</section>
+
+	<section class="white-box">
+		<h2 id="menu4">Education</h2>
+		<table border="1">
+			<caption><h3>학교 과정</h3></caption>
+			<tr style="background-color: skyblue">
+				<td>출신학교</td>
+				<td>전공</td>
+				<td>기간</td>
+				<td>구분</td>
+			</tr>
+	
+			<tr>
+				<td>정왕고</td>
+				<td>이과</td>
+				<td>2011 ~ 2014</td>
+				<td>졸업</td>
+			</tr>
+			
+			<tr>
+				<td>한국산업기술대</td>
+				<td>생명화학공학과</td>
+				<td>2014 ~ 2020</td>
+				<td>졸업</td>
+			</tr>
+		</table>
+		
+		<br>
+		
+		<table border="1">
+			<caption><h3>학원 과정</h3></caption>
+			<tr style="background-color: skyblue">
+				<td>이수과정</td>
+				<td>분야</td>
+				<td>기간</td>
+				<td>구분</td>
+			</tr>
+	
+			<tr>
+				<td>KITRI</td>
+				<td>Java 개발자</td>
+				<td>2021.06 ~ 2021.11</td>
+				<td>교육 중</td>
+			</tr>
+		</table>
+	</section>
+	
+	<section class="black-box">
+	<h2 id="menu5">Intro</h2>
+	<table border="1">
+
+		<tr style="text-align: center">
+			<td colspan=4>개인정보</td>
+		</tr>
+
+		<tr>
+			<td style="background-color: skyblue">이름</td>
+			<td>정세진</td>
+			<td style="background-color: skyblue">연락처</td>
+			<td>010-1234-5678</td>
+		</tr>
+
+		<tr>
+			<td style="background-color: skyblue">주소</td>
+			<td colspan=3></td>
+		</tr>
+
+		<tr>
+			<td style="background-color: skyblue">자기소개</td>
+			<td colspan=3>안녕하세요.</td>
+		</tr>
+	</table>
+	</section>
+	
+	<section class="white-box">
+		<h2 id="menu6">키트리 영상</h2>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/ixQ1b2EuSyI" 
+		title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+		clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe>
+	</section>
+
+	<footer class="black-box">
+		<div id="footer-box">
+			<a href="https://github.com/jsj0718"><img src="./img/정대만.jfif" alt="정대만" width="100" height="100"></a>
+			<p>
+			about 정세진 | 개인정보보호 | 광고문의 | 주소: 코오롱사이언스1차 4층 한국정보기술연구원 <br>
+			|문의: jeongsejin718@gmail.com |	홈페이지: https://github.com/jsj0718 <br>
+			@ 2021 JSJ
+			</p>
+		</div>	
+	</footer>
+</body>
+</html>
