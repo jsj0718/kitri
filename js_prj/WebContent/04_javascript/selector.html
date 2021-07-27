@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script>
+		// id 선택자 사용
+		// document.getElementById(id 선택자 값);
+// 		var idSelect = document.getElementById("id-selector");
+// 		alert(idSelect);	// onload를 사용하지 않거나, 해당 HTML 내용보다 script가 위에 위치하면 null이 됨 (HTML보다 먼저 실행되기 때문)
+// 		console.log(idSelect);
+// 		idSelect.style.color = "blue";	// javaScript로 style 값 변경 가능
+		
+		function idColorSet() {
+			var idSelect = document.getElementById("id-selector");
+			idSelect.style.color = "blue";
+		}
+		
+		function idColorInit() {
+			var idSelect = document.getElementById("id-selector");
+			idSelect.style.color = "black";
+		}
+		
+		function classColorSet() {
+			var classSelect = document.getElementsByClassName("class-selector");
+			for (var i=0; i<classSelect.length; i++) {
+				classSelect.item(i).style.color = "gold";
+			}
+		}
+		
+		function classColorInit() {
+			var classSelect = document.getElementsByClassName("class-selector");
+			for (var i=0; i<classSelect.length; i++) {
+				classSelect.item(i).style.color = "black";
+			}
+		}
+		
+		// p-selector id 요소 내 span 태그 선택
+// 		function queryColorSet() {
+// 			var querySelect = document.querySelectorAll("#p-selector span");
+			
+// 			for (var i=0; i<querySelect.length; i++) {
+// 				querySelect.item(i).style.color = "green";
+// 			}			
+// 		}
+		
+// 		function queryColorInit() {
+// 			var querySelect = document.querySelectorAll("#p-selector span");
+			
+// 			for (var i=0; i<querySelect.length; i++) {
+// 				querySelect.item(i).style.color = "black";
+// 			}			
+// 		}
+		
+		// 자바스크립트를 바로 적용해야 하는 경우 head안에 script를 적을 때 onload를 사용하면 적용 가능하다.
+		window.onload = function() {
+			var querySelect = document.querySelectorAll("#p-selector span");
+			
+			for (var i=0; i<querySelect.length; i++) {
+				querySelect.item(i).style.color = "green";
+			}						
+		}
+	
+	</script>
+</head>
+<body>
+	<div id="id-selector">id 선택자 영역</div>
+	<button onclick="idColorSet();">id 색 변경</button>
+	<button onclick="idColorInit();">id 색 되돌리기</button>
+	
+	<div class="class-selector">class 1 선택자 영역</div>
+	<div class="class-selector">class 2 선택자 영역</div>
+	<button onclick="classColorSet();">class 색 변경</button>
+	<button onclick="classColorInit();">class 색 되돌리기</button>
+	
+	<p id="p-selector">
+		p 태그 값 <br>
+		<span>p > span 태그 1</span> <br>
+		<span>p > span 태그 2</span>
+	</p>
+	<span>span 태그</span> <br>
+	
+	<button onclick="queryColorSet();">p 태그 내 span 태그 색 변경</button>	
+	<button onclick="queryColorInit();">p 태그 내 span 태그 색 되돌리기</button>	
+	
+</body>
+</html>
