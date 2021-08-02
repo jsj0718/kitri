@@ -11,9 +11,11 @@
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
+
+	// insert를 위해 값을 받아옴
 	String btitle = request.getParameter("btitle");
-	String bwriter = request.getParameter("bwriter");
 	String bcontent = request.getParameter("bcontent");
+	String bwriter = (String) session.getAttribute("userId");
 	
 	BoardDAO bdao = new BoardDAO();
 	
@@ -29,7 +31,7 @@
 %>
 	<script>
 		alert("게시글 등록 실패");
-		location.href = "board.jsp";
+		location.href = "boardWrite.jsp";
 	</script>
 <%	
 	}

@@ -13,32 +13,25 @@
 		border: 1px solid black;
 		
 	}
+	
+	#bwriter {
+		background-color: #D3D3D3;
+	}
 </style>
+
+<script>
+	function moveToBoard() {
+		location.href = "board.jsp";
+	}
+</script>
 </head>
 <body>
-	<!-- 
-	<div id="write-box">
-		<div id="title">
-			<span>제목</span>
-			<input type="text" name="btitle">
-		</div>
-		
-		<div id="writer">
-			<span>작성자</span>
-		</div>
-
-		<div id="content">
-			<span>내용</span>
-			<textarea name="bcontent" rows="15" cols="50"></textarea>
-		</div>
-		
-		<div>
-			<button>저장</button>
-			<button>취소</button>
-		</div>
-	</div>
-	-->
-	
+<%
+	String userId = (String) session.getAttribute("userId");
+	if (userId == null) {
+		response.sendRedirect("login.jsp");		
+	}
+%>	
 	<div class="container">
 		<h1 class="text-center">게시글 작성</h1>
 		<form action="boardWriteAction.jsp" method="POST">
@@ -48,14 +41,14 @@
 			</div>
 			<div class="form-group">
 				<label for="writer">작성자</label> 
-				<input type="text" class="form-control" id="bwriter" name="bwriter" placeholder="작성자를 입력하세요" required>
+				<input type="text" class="form-control" id="bwriter" name="bwriter" placeholder="작성자를 입력하세요" value="<%=userId %>" readonly>
 			</div>
 			<div class="form-group">
 				<label for="content">내용</label> 
 				<textarea class="form-control" id="bcontent" name="bcontent" placeholder="내용을 입력하세요" rows="10" required></textarea>
 			</div>
 			<button type="submit" class="btn btn-default">제출</button>
-			<button type="reset" class="btn btn-default">취소</button>
+			<input type="button" class="btn btn-default" onclick="moveToBoard();" value="취소">
 		</form>
 	</div>
 </body>

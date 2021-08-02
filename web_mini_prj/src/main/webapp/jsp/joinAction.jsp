@@ -33,7 +33,7 @@
 %>
 	<script type="text/javascript">
 		alert("회원가입에 성공했습니다.");
-		location.href = "board.jsp";
+		location.href = "login.jsp";
 	</script>			
 <%
 		} else {
