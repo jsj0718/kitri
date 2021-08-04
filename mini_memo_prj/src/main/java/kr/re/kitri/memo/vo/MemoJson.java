@@ -1,9 +1,10 @@
 package kr.re.kitri.memo.vo;
 
 public class MemoJson {
-	private int id;
-	private String title;
-	private String start;
+	private int id;	// no
+	private String title;	// title
+	private String start;	// mdate
+	private String description;	// memo
 	
 	public int getId() {
 		return id;
@@ -23,6 +24,14 @@ public class MemoJson {
 	public void setStart(String start) {
 		this.start = start;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+
 	
 	
 }

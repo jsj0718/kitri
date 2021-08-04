@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/mini_memo_prj/assets/css/login.css" />
-<script src="/mini_memo_prj/assets/js/login.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/login.css" />
+<script src="${pageContext.request.contextPath }/assets/js/login.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -23,7 +23,7 @@
 	
 		<!-- Sign In -->
 		<div class="container__form container--signin">
-			<form action="/mini_memo_prj/member/login" class="form" id="form2" name="signinForm" method="POST">
+			<form action="${pageContext.request.contextPath }/member/login" class="form" id="form2" name="signinForm" method="POST">
 				<h2 class="form__title">Sign In</h2>
 				<input type="text" placeholder="ID" class="input" name="id" required />
 				<input type="password" placeholder="Password" class="input" name="pw" required />
