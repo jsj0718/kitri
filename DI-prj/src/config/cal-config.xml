@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+<!-- 	<bean id="cal" class="spring.di.cal.Calculator"> -->
+		<!-- name : 변수명 (a, b), setter를 이용하여 값 설정 -->
+<!-- 		<property name="a"> -->
+<!-- 			<value>10</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="b" value="4"> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+	<context:annotation-config/>
+	
+	<!-- 변수는 들어오는 순서대로 입력 a = 10, b = 4 (순서 변경을 원하면 index 활용) -->
+	<bean id="cal" class="spring.di.cal.Calculator">
+<!-- 		<constructor-arg><value>10</value></constructor-arg> -->
+<!-- 		<constructor-arg><value>4</value></constructor-arg> -->
+<!-- 		<constructor-arg index="0" value="10"/> -->
+<!-- 		<constructor-arg index="1" value="4"/> -->
+<!-- 		<constructor-arg name="a" value="10"/> -->
+<!-- 		<constructor-arg name="b" value="4"/> -->
+		
+	</bean>
+	
+	<bean id="a" class="java.lang.Integer">
+		<constructor-arg value="20"/>
+	</bean>
+	
+	<bean id="b" class="java.lang.Integer">
+		<constructor-arg value="10"/>
+	</bean>
+</beans>
