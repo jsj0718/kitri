@@ -8,7 +8,7 @@ public class MemberVO {
 	private String phone;
 	private String email;
 	private String gender;
-	private String hobby;
+	private String[] hobby;
 	
 	public String getId() {
 		return id;
@@ -53,9 +53,15 @@ public class MemberVO {
 		this.gender = gender;
 	}
 	public String getHobby() {
-		return hobby;
+		String result = "";
+		if (hobby != null) {
+			for (String h : hobby) {
+				result += (h + ", ");
+			}			
+		}
+		return result;
 	}
-	public void setHobby(String hobby) {
+	public void setHobby(String[] hobby) {
 		this.hobby = hobby;
 	}
 	
