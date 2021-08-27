@@ -21,17 +21,17 @@ public class VisitorServiceImpl implements VisitorService {
 
 	@Override
 	public int registVisitor(VisitorVO vvo) {
-		return 0;
+		return vdao.insertVisitor(vvo);
 	}
 
 	@Override
 	public int updateVisitor(VisitorVO vvo) {
-		return 0;
+		return vdao.updateVisitor(vvo);
 	}
 
 	@Override
-	public int deleteVisitor(VisitorVO vvo) {
-		return 0;
+	public int deleteVisitor(int vno) {
+		return vdao.deleteVisitor(vno);
 	}
 
 }

@@ -33,7 +33,9 @@ public class VisitorDAOImpl implements VisitorDAO {
 	
 	@Override
 	public ArrayList<VisitorVO> selectVisitors() {
-		String SQL = "SELECT * FROM VISITOR";
+		String SQL = "SELECT * "
+				+ "FROM VISITOR "
+				+ "ORDER BY REGDATE DESC";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -64,8 +66,8 @@ public class VisitorDAOImpl implements VisitorDAO {
 
 	@Override
 	public int insertVisitor(VisitorVO vvo) {
-		String SQL = "INSERT INTO VISITOR(VNO, NICKNAME, CONTENT, REGDATE) "
-				+ "VALUES (VISITOR_VNO_SEQ.NEXTVAL, ?, ?, ?)";
+		String SQL = "INSERT INTO VISITOR(VNO, NICKNAME, CONTENT) "
+				+ "VALUES (VISITOR_VNO_SEQ.NEXTVAL, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -75,7 +77,6 @@ public class VisitorDAOImpl implements VisitorDAO {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, vvo.getNickname());
 			pstmt.setString(2, vvo.getContent());
-			pstmt.setDate(3, (Date) vvo.getRegdate());
 			
 			return pstmt.executeUpdate();
 		} catch (SQLException e) {

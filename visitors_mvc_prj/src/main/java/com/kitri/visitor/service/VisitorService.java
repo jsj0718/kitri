@@ -8,5 +8,5 @@ public interface VisitorService {
 	public ArrayList<VisitorVO> searchVisitors();
 	public int registVisitor(VisitorVO vvo);
 	public int updateVisitor(VisitorVO vvo);
-	public int deleteVisitor(VisitorVO vvo);
+	public int deleteVisitor(int vno);
 }

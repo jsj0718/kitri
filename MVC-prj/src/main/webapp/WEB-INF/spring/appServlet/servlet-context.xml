@@ -28,6 +28,15 @@
 	
 	<context:component-scan base-package="com.kitri.mvctest" />
 	
+	<!-- Interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- url을 넣어서 인터셉트 진행 -->
+			<mvc:mapping path="/member/form"/>
+			<bean id="interceptor" class="com.kitri.mvctest.InterceptorTest"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	
 	
 </beans>
