@@ -1,6 +1,6 @@
 package com.kitri.visitor.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,7 +34,7 @@ public class VisitorController {
 	
 	@RequestMapping("/visitor")
 	public String visitor(Model model) {		
-		ArrayList<VisitorVO> vlist = vservice.searchVisitors();
+		List<VisitorVO> vlist = vservice.searchVisitors();
 		model.addAttribute("vlist", vlist);	// model에 담아서 데이터 전송
 
 		return "visitor";

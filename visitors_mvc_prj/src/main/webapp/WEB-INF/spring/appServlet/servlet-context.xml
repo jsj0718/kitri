@@ -14,16 +14,37 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
+	
 
+	<!-- Component를 사용할 수 있게 만들어주는 태그 -->
+	<context:component-scan base-package="com.kitri.visitor" />
+	<context:property-placeholder location="classpath:mybatis/db.properties"/>
+	
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<beans:property name="driverClassName" value="${driver}"/>
+		<beans:property name="url" value="${url}"/>
+		<beans:property name="username" value="${user}"/>
+		<beans:property name="password" value="${password}"/>
+	</beans:bean>
+	
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="configLocation" value="classpath:/mybatis/config/mybatis-config.xml"/>
+		<beans:property name="mapperLocations" value="classpath:/mybatis/mapper/*-mapper.xml"/>	<!-- *-mapper.xml (표현식)을 통해 모든 매퍼를 가져올 수 있다. -->
+	</beans:bean>
+	
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache"> 
+		<beans:constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</beans:bean>
+	
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean>
+	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
-	<!-- Component를 사용할 수 있게 만들어주는 태그 -->
-	<context:component-scan base-package="com.kitri.visitor" />
-	
-	
 	
 </beans:beans>

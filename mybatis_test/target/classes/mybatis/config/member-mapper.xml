@@ -3,7 +3,76 @@
 
 <!-- namespace에는 테이블 명을 주로 적는다. -->
 <mapper namespace="member">
-	<select id="selectMember">
-		SELECT * FROM MEMBER
+	<resultMap type="mybatis.vo.MemberVO" id="memberResultMap">
+		<result property="id" column="userid"/>
+		<result property="pw" column="userpw"/>
+		<result property="email" column="email"/>
+	</resultMap>
+	
+	<!-- 1. db와 vo의 변수가 매칭되는 경우 2. db와 vo의 변수가 매칭되지 않는 경우 -->
+<!-- 	<select id="selectMembers" resultType="member"> -->
+	<select id="selectMembers" resultMap="memberResultMap">
+		SELECT * 
+		FROM MEMBER
 	</select>
+	
+<!-- 	<select id="selectMember"  resultType="member"> -->
+	<select id="selectMember" resultMap="memberResultMap">
+		SELECT * 
+		FROM MEMBER 
+		WHERE 1=1
+		<if test="id != null">
+			AND USERID = #{id}
+		</if>
+		<if test="pw != null">
+			AND USERPW = #{pw}	
+		</if>
+	</select>
+	
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO MEMBER (USERID, USERPW, EMAIL)
+		VALUES (#{userId}, #{userPw}, #{email})
+	</insert>
+	
+	<!-- 
+	<update id="updateMember" parameterType="member">
+		UPDATE MEMBER
+		<choose>
+			<when test="userPw != null and email == null">
+				SET USERPW = #{userPw}				
+			</when>
+			<when test="email != null and userPw == null">
+				SET EMAIL = #{email}			
+			</when>
+			<otherwise>
+				SET USERPW = #{userPw},
+				EMAIL = #{email}
+			</otherwise>
+		</choose>		
+		WHERE USERID = #{userId}
+	</update>
+	 -->
+	 
+	 <!-- hashmap을 이용한 insert (db column명과 파라미터 변수명이 다른 경우 사용) -->
+	<update id="updateMember" parameterType="hashmap">
+		UPDATE MEMBER
+		<choose>
+			<when test="pw != null and email == null">
+				SET USERPW = #{pw}				
+			</when>
+			<when test="email != null and pw == null">
+				SET EMAIL = #{email}			
+			</when>
+			<otherwise>
+				SET USERPW = #{pw},
+				EMAIL = #{email}
+			</otherwise>
+		</choose>		
+		WHERE USERID = #{id}
+	</update>
+	 
+	<delete id="deleteMember" parameterType="string">
+		DELETE FROM MEMBER
+		WHERE USERID = #{userId}
+	</delete>
 </mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace에는 테이블 명을 주로 적는다. -->
+<mapper namespace="visitor">
+	<resultMap type="visitor" id="visitorResultMap">
+		<result property="vno" column="vno"/>
+		<result property="nickname" column="nickname"/>
+		<result property="content" column="content"/>
+		<result property="regdate" column="regdate"/>
+	</resultMap>
+	
+	<select id="selectVisitors" resultMap="visitorResultMap">
+<!-- 	<select id="selectVisitors" resultType="visitor"> -->
+		SELECT * 
+		FROM VISITOR
+		ORDER BY VNO DESC
+	</select>
+	
+	<select id="selectVisitor" resultMap="visitorResultMap">
+<!-- 	<select id="selectVisitor" resultType="visitor"> -->
+		SELECT * 
+		FROM VISITOR 
+		WHERE 1=1
+		<if test="vno != null">
+			AND VNO = #{vno}
+		</if>
+		<if test="nickname != null">
+			AND NICKNAME = #{nickname}	
+		</if>
+		<if test="content != null">
+			AND CONTENT = #{content}	
+		</if>
+		<if test="regdate != null">
+			AND REGDATE = #{regdate}	
+		</if>
+	</select>
+	
+	<insert id="insertVisitor" parameterType="visitor">
+		INSERT INTO VISITOR (VNO, NICKNAME, CONTENT)
+		VALUES (VISITOR_VNO_SEQ.NEXTVAL, #{nickname}, #{content})
+	</insert>	
+	 
+	<update id="updateVisitor" parameterType="visitor">
+		UPDATE VISITOR
+		SET CONTENT = #{content}
+		WHERE VNO = #{vno}
+	</update>
+	 
+	<delete id="deleteVisitor" parameterType="int">
+		DELETE FROM VISITOR
+		WHERE VNO = #{vno}
+	</delete>
+		
+</mapper>
