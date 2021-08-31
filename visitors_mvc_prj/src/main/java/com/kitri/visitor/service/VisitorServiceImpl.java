@@ -1,13 +1,11 @@
 package com.kitri.visitor.service;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kitri.visitor.dao.VisitorDAO;
 import com.kitri.visitor.vo.VisitorVO;
@@ -23,6 +21,7 @@ public class VisitorServiceImpl implements VisitorService {
 	@Autowired
 	PlatformTransactionManager transactionManager;
 	
+	@Transactional(readOnly=true)
 	@Override
 	public List<VisitorVO> searchVisitors() {
 		return vdao.selectVisitors();
@@ -33,25 +32,35 @@ public class VisitorServiceImpl implements VisitorService {
 		return vdao.selectVisitor(vvo);
 	}
 
+	@Transactional(rollbackFor=Exception.class)
 	@Override
 	public int registVisitor(VisitorVO vvo) {
 		
 		// 방법 1 (TransactionManager 직접 이용)
-		TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
+//		TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
+//		
+//		try {
+//			vdao.insertVisitor(vvo);
+//			vvo.setVno(29);
+//			vvo.setContent("내용 수정");
+//			
+//			System.out.println(0/0);
+//			
+//			vdao.updateVisitor(vvo);
+//			transactionManager.commit(status);	// 모든 작업 성공 시 commit
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			transactionManager.rollback(status);	// 작업 실패 시 rollback
+//		}
 		
-		try {
-			vdao.insertVisitor(vvo);
-			vvo.setVno(29);
-			vvo.setContent("내용 수정");
-			
-			System.out.println(0/0);
-			
-			vdao.updateVisitor(vvo);
-			transactionManager.commit(status);	// 모든 작업 성공 시 commit
-		} catch (Exception e) {
-			e.printStackTrace();
-			transactionManager.rollback(status);	// 작업 실패 시 rollback
-		}
+		// 방법 2 (tx:advice와 aop 이용)
+		vdao.insertVisitor(vvo);
+		vvo.setVno(29);
+		vvo.setContent("내용 수정");
+		
+		System.out.println(0/0);
+		
+		vdao.updateVisitor(vvo);
 		
 		return 0;
 		
