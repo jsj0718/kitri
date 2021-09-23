@@ -116,12 +116,13 @@
 							var code = xhr.responseText;
 							if (code) {
 								// 성공
-								alert("메모 등록 성공");	
 								calendar.addEvent({
 									title: title.value,
 									start: mdate.value,
 									description: memo.value
 								});
+								alert("메모 등록 성공");	
+								location.href="${pageContext.request.contextPath}/index#home";
 							} else {
 								// 실패
 								alert("메모 등록 실패");								
