@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace에는 테이블 명을 주로 적는다. -->
+<mapper namespace="img_user">
+	<resultMap type="com.kitri.mini.user.vo.ImgUserVO" id="imguserResultMap">
+		<result property="id" column="user_id"/>
+		<result property="pw" column="user_pw"/>
+		<result property="name" column="user_name"/>
+		<result property="email" column="user_email"/>
+	</resultMap>
+	
+	<select id="selectImgUser" resultMap="imguserResultMap">
+		SELECT * 
+		FROM IMG_USER
+		WHERE USER_ID = #{id}
+		AND USER_PW = #{pw}
+	</select>
+
+	<select id="selectIdCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM IMG_USER
+		WHERE USER_ID = #{id}
+	</select>
+	
+	<insert id="insertImgUser" parameterType="imguser">
+		INSERT INTO IMG_USER (USER_ID, USER_PW, USER_NAME, USER_EMAIL)
+		VALUES (#{id}, #{pw}, #{name}, #{email})
+	</insert>
+	
+</mapper>
