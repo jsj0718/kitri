@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#id-selector {
+		background-color : green;
+		color : white;
+	}
+</style>
+<script>
+	function appendText() {
+		var append = document.getElementById("append");
+		// 계속해서 값이 추가됨
+		var header = document.createElement("h1");
+		var val = document.createTextNode("값");
+		
+		// 속성 추가
+// 		header.id = "id-selector";
+		header.setAttribute("id", "id-selector");
+		
+		header.appendChild(val);
+		append.appendChild(header);
+	
+		// innerHTML은 태그와 값을 모두 포함(새로고침이 되면서 값 하나만 추가됨)
+		// +=로 바꾼다면 위처럼 값이 계속 추가가 된다.
+// 		append.innerHTML += "<h1>값</h1>";
+// 		append.innerHTML += "<h1 id='id-selector'>값</h1>";
+	}
+	
+	function nodeSelect() {
+		var list = document.getElementById("list");
+// 		list.innerHTML += "<li>리스트 추가</li>";
+		// Element(태그)만 선택
+		// firstElementChild
+		// children[]
+		// lastElementChild
+		var li1 = list.firstElementChild;	// 첫 번째 자식 노드 선택
+		var li2 = list.children[1];	// 모든 자식들의 노드를 배열로 가져옴
+		var li3 = list.lastElementChild;	// 마지막 자식 노드 선택
+		
+		console.log(li1);
+		li1.style.color = "red";
+		li2.style.color = "blue";
+		li3.style.color = "green";
+		
+		var append = document.createTextNode("추가 노드 값");
+		// insertBefore(추가노드, 기준노드) : 기준노드 바로 앞에 노드 추가
+		list.insertBefore(append, li3);
+	}
+</script>
+</head>
+<body>
+	<h1>태그 추가 예제</h1>
+	<button onclick="appendText();">텍스트 추가</button>
+	<button onclick="nodeSelect();">노드 선택(스타일 변경)</button>
+	<div id="append">
+		<!-- 텍스트도 자식 노드에 포함된다. -->
+		<ul id="list">
+			<li>리스트 1</li>
+			<li>리스트 2</li>
+			<li>리스트 3</li>
+		</ul>
+	</div>
+</body>
+</html>

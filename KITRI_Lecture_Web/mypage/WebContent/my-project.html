@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Project</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Kirang+Haerang&display=swap');
+			
+		* {
+			font-family: 'Kirang Haerang', 굴림;
+			margin: 0;
+			padding: 0;
+		}
+		
+		html {
+			scroll-behavior:smooth;
+		}
+		
+		body {
+			font-size: 16px;
+		}
+		
+		h1{
+			text-align: center;
+			font-size: 3em;
+			padding: 20px 0;
+		}
+		
+		.bg-green{
+			background-color: #36B17C;
+			color:white;
+		
+		}
+		
+		.bg-white{
+			background-color: #FAF6EA;
+			color: black;
+		}
+		
+		/*메인 매뉴*/
+		nav#main-menu ul, nav#myinfo-menu ul{
+			list-style-type:none;
+		}
+		
+		nav#main-menu ul li{
+			float: right;
+			font-size: 25px;
+		}
+		
+		nav#main-menu ul li a{
+			text-decoration: none;
+			padding: 0 5px;
+			margin-bottom: 2px;
+			color: #222;
+		}
+		
+		nav#main-menu ul li a:hover {
+			color: skyblue;
+		}
+		
+		#skills {
+			clear: right;
+		}
+		#skills > div{
+			width: 70%;
+			margin: 0 auto;
+		}
+		
+		#skills img {
+			width: 100px;
+			height: 100px;
+			margin: 20px;
+		}
+		
+		#skills > div > div{
+			text-align: center;
+		}
+		
+		#project >div{
+			width: 650px;
+			margin: 0 auto;
+		}
+		#project .pro-box{
+			display: inline-block;
+			width: 300px;
+			height: 350px;
+/* 			border: 1px solid black; */
+			margin: 10px;
+		} 
+		
+		#project div#pro-img-box1{
+			background-image: url('img/soyren.png');
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			width:300px;
+			height: 300px;
+		} 
+		#project div#pro-img-box2{
+			background-image: url('img/project2.jpg');
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			width:300px;
+			height: 300px;
+		}
+		#project div#pro-img-box3{
+			background-image: url('img/project3.jpg');
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			width:300px;
+			height: 300px;
+		} 
+		#project div#pro-img-box4{
+			background-image: url('img/project4.jpg');
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			width:300px;
+			height: 300px;
+		}  
+		
+		#footer{
+			height: 70px;
+		}
+		#footer div{
+			width: 450px;
+			margin: 0 auto;
+		}
+		
+		#footer img{
+			float: left;
+			margin-top: 10px;
+			margin-right: 10px;
+			border-radius: 10px;
+		}
+		
+		#footer p {
+			line-height: 70px;
+		
+		}
+		
+		header h1:hover {
+			color: skyblue;
+		}
+		
+		#skills > div  img:hover{
+			transform: rotate(15deg);
+		}
+		
+		#project .pro-box div:first-child{
+			transition-property: transform;
+			transition-duration: 1s;
+		}
+		
+		#project .pro-box div:first-child:hover{
+			transform: scale(0.9);
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<header id="header">
+		<h1>MY PROJECT</h1>
+		<nav id="main-menu">
+			<ul>
+				<li><a href="#">Project</a></li>
+				<li><a href="myinfo-ori.html">My info</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<div class="bg-green" id="skills">
+			<h1 id="menu1">SKILLS</h1>
+			<div>
+				<div>
+					<img src="icon/oracle.png" alt="oracle">
+					<img src="icon/java.png" alt="java">
+					<img src="icon/html.png" alt="html">
+					<img src="icon/css.png" alt="css">
+				</div>
+				<div>
+					<img src="icon/javascript.png" alt="javascript">
+					<img src="icon/jsp.png" alt="servlet&jsp">
+					<img src="icon/mybatis.jpg" alt="mybatis">
+					<img src="icon/spring.png" alt="spring">
+				</div>
+			</div>
+		</div>
+		<div class="bg-white" id="project">
+			<div>
+				<h1 id="menu2">Project</h1>
+				<div class="pro-box">
+					<a href="https://github.com/jsj0718/SoyrenOrder" target="_blank"><div id="pro-img-box1"></div></a>
+					<div>제목: Soyren Order</div>
+					<div>기술: Oracle, Java, eXERD, Java Swing</div>
+				</div>
+				<div class="pro-box">
+					<div id="pro-img-box2"></div>
+					<div>제목: </div>
+					<div>기술: </div>
+				</div>
+				<div class="pro-box">
+					<div id="pro-img-box3"></div>
+					<div>제목: </div>
+					<div>기술: </div>
+				</div>
+				<div class="pro-box">
+					<div id="pro-img-box4"></div>
+					<div>제목: </div>
+					<div>기술: </div>
+				</div>
+			</div>
+		</div>
+		
+		<div style="position: fixed; bottom: 5px; right: 5px;">
+			<a href="#header"><img src="img/top.png" alt="위로 가기" width="30px"></a>			
+		</div>
+	</section>
+	<footer>
+		<div class="bg-green" id="footer">
+			<div>
+				<a href="https://github.com/jsj0718"><img src="icon/github.png" alt="깃허브 로고" width="50px"></a>
+				<p>
+				Copyright(C) 2021. JSJ, All rights reserved
+				</p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

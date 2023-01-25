@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+	}
+	
+	#box1 {
+		position: absolute;
+		top: 100px;
+		left: 100px;
+		background-color: red;
+		z-index: 3;
+	}
+	
+	#box2 {
+		position: absolute;
+		top: 130px;
+		left: 130px;
+		background-color: green;	
+		z-index: 2;
+	}
+	
+	#box3 {
+		position: absolute;
+		top: 80px;
+		left: 120px;
+		background-color: blue;
+		z-index: 1;
+	}
+	
+	table {
+		border: 1px solid #222;
+		border-collapse: collapse;
+		width: 500px;
+		table-layout: fixed;
+	}
+	
+	table th, td {
+		border: 1px solid #222;
+		vertical-align: bottom;	/* 테이블 요소들을 아래로 정렬 */
+	}
+</style>
+</head>
+<body>
+<!-- 	<div id="box1"></div> -->
+<!-- 	<div id="box2"></div> -->
+<!-- 	<div id="box3"></div> -->
+	
+	<h1>게시판</h1>
+	<table>
+		<caption>인기 도서</caption>
+		<tr>
+			<th>책 번호</th>
+			<th>책 제목</th>
+			<th>작성자</th>
+			<th>날짜</th>
+			<th>조회수</th>
+		</tr>
+		
+		<tr>
+			<td>1</td>
+			<td>룬의 아이들 아아아아아아아아아아아아아아아아아아아아아아아아아아</td>
+			<td>홍길동</td>
+			<td>2021-07-21</td>
+			<td>10</td>
+		</tr>
+		
+		<tr>
+			<td>2</td>
+			<td>더 복서</td>
+			<td>채치수</td>
+			<td>2021-07-21</td>
+			<td>12</td>
+		</tr>
+		
+		<tr>
+			<td>3</td>
+			<td>슬램덩크</td>
+			<td>강백호</td>
+			<td>2021-07-21</td>
+			<td>15</td>
+		</tr>
+		
+		<tr>
+			<td>4</td>
+			<td>귀멸의 칼날</td>
+			<td>탄지로</td>
+			<td>2021-07-21</td>
+			<td>20</td>
+		</tr>
+	</table>
+</body>
+</html>

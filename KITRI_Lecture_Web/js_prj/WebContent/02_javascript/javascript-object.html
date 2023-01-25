@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	// 일반 객체 만들기 (세미콜론 필수!)
+	var car = {
+		name: "Sonata",
+		cc: 1600,
+		color: "black",
+		door: 4,
+		// 시동 on
+		start: function() {
+			alert(this.name + "시동 On");
+		},
+		// 시동 off
+		stop: function() {
+			alert(this.name + "시동 Off");
+		},
+		carInfo: function() {
+			alert("차 이름: " + this.name + ", " + "차 CC: " + this.cc + ", " + "차 색상: " + this.color + ", " + "문 개수: " + this.door);
+		}
+	};
+
+// 	console.log(car.name);
+// 	console.log(car.cc);
+// 	console.log(car.color);
+// 	console.log(car.door);
+	
+// 	car.start();
+// 	car.stop();
+// 	car.carInfo();
+
+	// object 함수로 객체 만들기 (세미콜론 필수!)
+	var car2 = new Object();
+		
+	car2.name = "그렌져";
+	car2.cc = 2000;
+	car2.color = "white";
+	car2.door = 4;
+
+	// 시동 on
+	car2.start = function() {
+		alert(this.name + " 시동 On");
+	};
+	// 시동 off
+	car2.stop = function() {
+		alert(this.name + " 시동 Off");
+	};
+	car2.carInfo = function() {
+		alert("차 이름: " + this.name + ", " + "차 CC: " + this.cc + ", " + "차 색상: " + this.color + ", " + "문 개수: " + this.door);
+	};
+
+	console.log(car2.name);
+	console.log(car2.cc);
+	console.log(car2.color);
+	console.log(car2.door);
+	
+	car2.start();
+	car2.stop();
+	car2.carInfo();
+</script>
+</head>
+<body>
+	
+</body>
+</html>

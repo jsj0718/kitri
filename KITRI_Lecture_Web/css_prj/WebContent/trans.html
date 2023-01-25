@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	img {
+		width: 200px;
+		height: 200px;
+	}
+	
+	div#translate {
+		position: absolute;
+		top: 300px;
+		left: 300px;
+		display: inline-block;
+		border: 1px solid #222;
+	}
+	
+	#translate img {
+		transition-property: transform;
+		transition-duration: 1s;
+	}
+	
+	#translate img:hover {
+/* 		transform: translateX(50px); */
+/* 		transform: translateY(50px); */
+		transform: translate(-50px, -50px);
+	}	
+	
+	div#scale {
+		display: inline-block;
+		border: 1px solid #222;
+	}
+	
+	#scale img {
+		transition-property: transform;
+		transition-duration: 1s;
+	}
+	
+	#scale img:hover {
+/* 		transform: scale(1.5); */
+/* 		transform: scaleX(1.5); */
+		transform: scale(0.8);
+	}
+	
+	div#rotate {
+		display: inline-block;
+		border: 1px solid #222;
+	}
+	
+	#rotate img {
+		transition-property: transform;
+		transition-duration: 1s;
+	}
+	
+	#rotate img:hover {
+		transform: rotate(40deg);
+	}
+	
+	div#rotate3d {
+		display: inline-block;
+		border: 1px solid #222;
+		perspective: 200px;
+	}
+	
+	#rotate3d img {
+		transition-property: transform;
+		transition-duration: 1s;
+	}
+	
+	#rotate3d img:hover {
+		transform: rotateX(40deg);
+	}
+</style>
+</head>
+<body>
+	<div id="translate">
+		<img src="./img/게츠비.gif" alt="게츠비">
+	</div>
+	
+	<div id="scale">
+		<img src="./img/정대만.jfif" alt="정대만">
+	</div>
+
+	<div id="rotate">
+		<img src="./img/귀칼1.gif" alt="탄지로">
+	</div>
+	
+	<div id="rotate3d">
+		<img src="./img/Joker.gif" alt="탄지로">
+	</div>
+</body>
+</html>

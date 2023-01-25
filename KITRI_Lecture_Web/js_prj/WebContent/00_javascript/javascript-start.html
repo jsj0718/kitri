@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 자바스크립트 작성 위치 
+		1. 인라인
+		2. 내부
+		3. 외부
+		
+		입출력
+		1. document.write(HTML 출력문);
+		2. prompt(질문, 답);
+		3. confirm(질문);
+		4. alert(알림창 출력문);
+		5. console.log(로그 출력문);
+	 -->
+	 
+	 <!-- 작성위치 : 인라인 -->
+	 <button onclick="alert('버튼 클릭 완료');">버튼 클릭</button>
+	 
+	 <!-- 작성위치 : 내부 -->
+	 <script>
+// 	 	alert("내부 스크립트 작성");
+		document.write("내부 스크립트 작성문 출력");
+	 </script>
+	 
+	 <!-- 작성위치 : 외부 -->
+	 <script src="start.js"></script>
+	 
+	 
+	 <!-- 출력문 -->
+	 <h1>출력문</h1>
+	 <script>
+	 	// write (모두 로딩된 후 사용하면 html 내용이 다 사라짐)
+// 	 	document.write("<div>div1 태그 출력</div>"
+// 					+ "<div>div2 태그 출력</div>");
+	 	
+	 	// prompt
+// 	 	var answer = window.prompt("질문", "답변");	// 답변이 없으면 기본 설정값이 빈 공백으로 들어간다.
+// 	 	document.write("<div> 답변: " + answer + "</div>");
+	 	
+	 	// confirm
+// 	 	var flag = window.confirm("공지사항을 확인하셨습니까?");
+// 	 	if (flag) {
+// 	 		document.write("<span>예</span>");
+// 	 	} else {
+// 	 		document.write("<span>아니오</span>");	 		
+// 	 	}
+
+		// alert
+// 		window.alert("알림창입니다.");
+		
+		// console
+		console.log("로그값");
+	 </script>
+</body>
+</html>

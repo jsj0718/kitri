@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function timeOut() {
+		// setTimeout(한번 동작할 함수, 지연시간)
+		window.setTimeout(printConsole, 3000);
+	}
+	
+	function printConsole() {
+		console.log(new Date);
+		// 재귀 호출로 계속해서 호출할 수 있다. (setInterval 사용하는 것이 낫다.)
+		window.setTimeout(printConsole, 3000);
+	}
+	
+	
+</script>
+</head>
+<body>
+	<h1>setTimeout 테스트</h1>
+	<button onclick="timeOut();">setTimeout 동작</button>
+	<button onclick="">setTimeout 정지</button>
+</body>
+</html>

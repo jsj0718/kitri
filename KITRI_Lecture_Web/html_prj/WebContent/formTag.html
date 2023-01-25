@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- form태그는 서버로 데이터를 전송하기 위해 사용되는 태그 
+		action속성은 form태그에서 전송버튼을 누르게 되면 이동하는 주소(경로)-->
+		<!-- form태그를 통해서 데이터를 전송하위해 데이터를 저장하는 변수의 개념  -->
+	<form action="server.html">
+		<fieldset>
+			<legend> 연습중</legend>
+			text: <input type="text" name="text" value="아이디" readonly> <br> <!-- readonly는 값을 변경하지 못하게 함 -->
+			search: <input type="search"> <br>
+			tel: <input type="tel"> <br>
+			url: <input type="url"> <br>
+			email: <input type="email">  <br>
+			password: <input type="password">  <br>
+			date: <input type="date">  <br>
+			number: <input type="number">  <br>
+			checkbox: 게임<input type = "checkbox" name="hobby">	<!-- 다중선택시 사용  -->
+					영화<input type="checkbox" name="hobby">  <br>
+				
+			radio: <input type="radio" name="gender"> 남
+					<input type="radio" name="gender"> 여 <br>	<!-- 반드시 하나만 선택할시 사용 -->
+				
+			file: <input type="file"> <br>
+			
+			submit: <input type="submit" value="전송"> <br>
+			image:  <input type="image" src="img/power.png" width="20px"> <br>	<!-- 전송버튼 기능을 지닌 image 태그 -->
+			button: <input type="button" value="버튼"><br>		
+		</fieldset>
+	</form>
+</body>
+</html>

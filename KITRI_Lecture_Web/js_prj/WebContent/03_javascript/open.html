@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	// window.open("호출할 팝업창", "팝업창 이름", "설정값(팝업창 크기, 위치 등)");
+	var popup = window.open("popup.html", "popup", "width=500px, height=500px, top=200px, left=700px, "
+			+ "resizable=no");
+	
+	function popupClose() {
+		popup.close();
+	}
+</script>
+</head>
+<body>
+	<h1>메인 화면</h1>
+	<p>메인 페이지 입니다. 메뉴1, 메뉴2, 메뉴3</p>
+	<button onclick="popupClose();">팝업 닫기</button>
+</body>
+</html>

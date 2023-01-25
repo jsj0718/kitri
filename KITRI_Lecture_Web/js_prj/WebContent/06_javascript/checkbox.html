@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+		var btn = document.getElementById("btn");
+		var check = document.getElementsByName("check");
+		btn.onclick = function() {
+			for (var i=0; i<check.length; i++) {
+				// check.item(i).checked도 가능
+				if (check[i].checked) {
+					alert(check[i].value);
+				}
+			}
+		}
+		
+		var all = document.getElementById("all");
+		all.onclick = function() {
+			if (all.checked) {
+				for (var i=0; i<check.length; i++) {
+					if (!check[i].checked) {
+						check[i].checked = true;
+					}
+				}							
+			} else {
+				for (var i=0; i<check.length; i++) {
+					if (check[i].checked) {
+						check[i].checked = false;
+					}
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="checkbox" id="all"> 전체 선택
+	<input type="checkbox" name="check" value="1"> 값1
+	<input type="checkbox" name="check" value="2"> 값2
+	<input type="checkbox" name="check" value="3"> 값3
+	
+	<br>
+	
+	<button id="btn">체크 확인</button>
+
+	
+</body>
+</html>

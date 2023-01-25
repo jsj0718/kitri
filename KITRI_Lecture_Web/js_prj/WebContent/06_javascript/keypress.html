@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+		var keyVal = document.getElementById("inputText");
+		var output = document.getElementById("output");
+		keyVal.onkeypress = function(e) {
+			// 한글 입력은 안된다. (이유는 ?)
+			console.log(e);
+			// 13 = enter
+			if (e.keyCode == 13) {
+				output.innerHTML += keyVal.value + "<br>";
+				keyVal.value = "";
+			}
+		}
+
+		var inputBtn = document.getElementById("inputBtn");
+		inputBtn.onclick = function() {
+			output.innerHTML += keyVal.value + "<br>";
+			keyVal.value = "";
+		}
+	}
+	
+</script>
+</head>
+<body>
+	<input type="text" id="inputText">
+	<button id="inputBtn">입력</button>
+	<div id="output"></div>
+</body>
+</html>
